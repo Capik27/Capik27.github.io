@@ -88,6 +88,7 @@ function musicChange(event) {
           list_item[i].classList.remove("textt");
         } else {
           //audio.pause();
+          audio.play();
         }
       } else {
         if (list_item[i].classList.contains("color_main")) {
