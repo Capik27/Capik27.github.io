@@ -88,6 +88,7 @@ function musicChange(event) {
           list_item[i].classList.remove("textt");
         } else {
           //audio.pause();
+          console.log('не работает!!!')
           audio.play();
         }
       } else {
