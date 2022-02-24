@@ -58,7 +58,17 @@ const tracks_array = [
 const audio = document.querySelectorAll("audio");
 for (let i = 0; i < audio.length; i++) {
   audio[i].volume = 0.25;
+  audio[i].addEventListener("play", musicStop);
 }
+
+function musicStop(event) {
+  if (event.target == audio[0]) {
+    audio[1].pause();
+  } else {
+    audio[0].pause();
+  }
+}
+
 //PLAYER
 tracks_music_list.addEventListener("click", musicChange);
 function musicChange(event) {
@@ -71,11 +81,13 @@ function musicChange(event) {
         let preaudio = document.querySelector(".header-track");
         preaudio.pause();
         let audio = document.querySelector(".tracks_music_track");
-        audio.src = tracks_array[i];
-        audio.autoplay = true;
         if (!list_item[i].classList.contains("color_main")) {
+          audio.src = tracks_array[i];
+          audio.play();
           list_item[i].classList.add("color_main");
           list_item[i].classList.remove("textt");
+        } else {
+          //audio.pause();
         }
       } else {
         if (list_item[i].classList.contains("color_main")) {
